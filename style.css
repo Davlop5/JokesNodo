@@ -1,58 +1,110 @@
+/* style.css */
+
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-}
-
-header {
-  text-align: center;
-  padding: 20px;
-  background-color: #222;
-  color: #fff;
-}
-
-.button-warning {
-  margin: 10px;
-  padding: 10px;
-  background-color: rgb(255, 0, 0);
-  color: #ffffff;
-  border: none;
-  border-radius: 5px;
-  font-weight: 500;
-}
-
-.button-info {
-  margin: 10px;
-  padding: 10px;
-  background-color: rgb(60, 60, 255);
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  font-weight: 500;
-}
-
-.button-details {
-  margin: 10px;
-  padding: 10px;
-  background-color: rgb(0, 144, 0);
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  font-weight: 500;
-}
-
-.jokeDetail{
-  visibility: hidden;
-}
-
-.joke, .buttons {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-content: center;
   justify-content: center;
   align-items: center;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: x-large;
-  margin: 10%;
+  height: 100vh;
+  background: linear-gradient(135deg, #f06, #ffcc00);
+  color: #333;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  background: #fff;
+  padding: 20px 40px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 800px;
+  gap: 20px; /* Espaciado entre elementos */
+}
+
+h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.joke-box {
+  flex: 1; /* Ajusta el tamaño automáticamente */
+  font-size: 18px;
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.palanca-box {
+  flex: 1; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.palanca {
+  cursor: pointer;
+  width: 100px;
+  height: 150px;
+}
+
+img {
+  max-width: 80%;
+  vertical-align: top;
+}
+
+
+button {
+  background: black;
+  cursor: pointer;
+  border: none;
+  padding: 16px 32px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  position: relative; /* Necesario para que ::before se posicione respecto al botón */
+  border-radius: 12px;
+  overflow: hidden; /* Asegura que ::before no sobresalga del botón */
+  z-index: 1; /* Garantiza que el contenido del botón esté por encima del pseudo-elemento */
+}
+
+button::before {
+  content: "";
+  position: absolute; /* Se posiciona en relación con el botón */
+  top: 0;
+  left: 0;
+  z-index: -1; /* Coloca el pseudo-elemento detrás del botón */
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, red, blue, deeppink, blue, red, blue, deeppink, blue);
+  background-size: 800%;
+  border-radius: 12px; /* Asegura que coincida con el botón */
+  filter: blur(8px);
+  animation: glowing 20s linear infinite;
+}
+
+@keyframes glowing {
+  0% {
+      background-position: 0 0;
+  }
+
+  50% {
+      background-position: 400% 0;
+  }
+
+  100% {
+      background-position: 0 0;
+  }
 }
